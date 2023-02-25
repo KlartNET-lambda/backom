@@ -4,10 +4,7 @@ import {
 	Container, Row, Col, Card, Form, InputGroup, FormControl,
 	Button, Alert, Spinner, Modal, Nav, Navbar, NavDropdown, Table
 } from 'react-bootstrap';
-
 const root = document.querySelector('#app') as HTMLDivElement;
-
-
 
 const App: React.FC = (): React.ReactElement => {
 	const $pw = useRef<HTMLInputElement>(null);
@@ -15,27 +12,27 @@ const App: React.FC = (): React.ReactElement => {
 	const [verifying, setVerifying] = useState(false);
 	const [loginError, setLoginError] = useState('');
 	const [files, setFiles] = useState([]);
-	const loadFiles = async () => {
+	const onLogin = async () => {
 		setVerifying(true);
 		setLoginError('');
+
 		const response = await (
 			await fetch("https://api-backom.klartnet.ml/login", {
 				method: 'POST',
 				body: JSON.stringify({
-					password: password
+					password
 				})
 			})
 		).json();
-
 		if(response.body.valid) {
-			setPassword(current=> '•'.repeat(current.length));
 			setFiles(response.body.files);
 		} else {
 			setPassword('');
 			setLoginError("잘못된 비밀번호입니다");
 			$pw.current?.focus();
 		}
-		return setVerifying(false);
+		setPassword(current=> '•'.repeat(current.length));
+		setVerifying(false);
 	};
 
 
@@ -51,14 +48,14 @@ const App: React.FC = (): React.ReactElement => {
 					type="password"
 					placeholder="비밀번호"
 					autoComplete="current-password"
-					disabled={!!(!setVerifying || files.length)}
+					disabled={!!(verifying || files.length)}
 					value={password}
 					autoFocus={true}
 
 					onInput={event=> setPassword(event.currentTarget.value)}
 					onKeyDown={event=> {
 						if(event.key === 'Enter') {
-							loadFiles();
+							onLogin();
 							event.preventDefault();
 						}
 					}}
@@ -68,9 +65,9 @@ const App: React.FC = (): React.ReactElement => {
 				/>
 				<Button
 					id="btn"
-					disabled={!!files.length}
+					disabled={!!(verifying || files.length)}
 
-					onClick={loadFiles}
+					onClick={onLogin}
 					
 					variant="primary"
 				>
