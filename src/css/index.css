@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+body {
+	display: block;
+	text-align: center;
+	margin-top: 50px;
+}
+
+#login-form > #btn {
+	border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+}
+
+#login-form {
+	max-width: 400px;
+	margin: 0 auto;
+}
+.file-content {
+	text-align: left;
+}

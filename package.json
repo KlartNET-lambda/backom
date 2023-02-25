@@ -1,0 +1,24 @@
+{
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"esbuild": "tsx ./scripts/build.ts",
+		"publish": "npm run esbuild PUBLISH && tsx ./scripts/publish.ts",
+		"test": "npm run esbuild TEST"
+	},
+	"dependencies": {
+		"react": "^18.2.0",
+		"react-bootstrap": "^2.7.2",
+		"react-dom": "^18.2.0"
+	},
+	"devDependencies": {
+		"@types/node": "^18.14.1",
+		"@types/react": "^18.0.28",
+		"@types/react-dom": "^18.0.11",
+		"esbuild": "^0.17.10",
+		"esbuild-plugin-copy": "^2.0.2",
+		"gh-pages": "^5.0.0",
+		"servor": "^4.0.2",
+		"tsx": "^3.12.3"
+	}
+}
