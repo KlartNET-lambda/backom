@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/css/index.css"],
+  "sourcesContent": ["@charset \"UTF-8\";\r\n\r\nbody {\r\n\tdisplay: block;\r\n\ttext-align: center;\r\n\tmargin-top: 50px;\r\n}\r\n\r\n#login-form > #btn {\r\n\tborder-top-right-radius: 0.25rem;\r\n    border-bottom-right-radius: 0.25rem;\r\n}\r\n\r\n#login-form {\r\n\tmax-width: 400px;\r\n\tmargin: 0 auto;\r\n}\r\n.file-content {\r\n\ttext-align: left;\r\n}"],
+  "mappings": ";;;AAEA;AACC;AACA;AACA;AAAA;AAGD;AACC;AACG;AAAA;AAGJ;AACC;AACA;AAAA;AAED;AACC;AAAA;",
+  "names": []
+}
