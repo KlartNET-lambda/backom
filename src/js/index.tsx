@@ -16,16 +16,16 @@ const App: React.FC = (): React.ReactElement => {
 		setVerifying(true);
 		setLoginError('');
 
-		const response = await (
-			await fetch("https://api-backom.klartnet.ml/login", {
+		const data = await (
+			await fetch("https://qlg7rqa54pjdfs5l3houbu6hfi0kzpks.lambda-url.ap-northeast-2.on.aws/", {
 				method: 'POST',
 				body: JSON.stringify({
 					password
 				})
 			})
 		).json();
-		if(response.body.valid) {
-			setFiles(response.body.files);
+		if(data.valid) {
+			setFiles(data.files);
 		} else {
 			setPassword('');
 			setLoginError("잘못된 비밀번호입니다");
@@ -38,9 +38,9 @@ const App: React.FC = (): React.ReactElement => {
 
 	return (
 		<Container>
-			<Form
+			<InputGroup
 				id="login-form"
-				className="input-group mb-3"
+				className="mb-3"
 			>
 				<Form.Control
 					ref={$pw}
@@ -55,8 +55,8 @@ const App: React.FC = (): React.ReactElement => {
 					onInput={event=> setPassword(event.currentTarget.value)}
 					onKeyDown={event=> {
 						if(event.key === 'Enter') {
-							onLogin();
 							event.preventDefault();
+							onLogin();
 						}
 					}}
 
@@ -97,7 +97,7 @@ const App: React.FC = (): React.ReactElement => {
 				>
 					<span className="text-danger small">{ loginError }</span>
 				</InputGroup>
-			</Form>
+			</InputGroup>
 			<Table bordered striped>
 				<thead>
 					<tr>
